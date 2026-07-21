@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import http from "http";
 
 import "dotenv/config";
 
@@ -15,6 +16,9 @@ const PORT = process.env.PORT;
 const FRONTEND_URL = process.env.FRONTEND_URL;
 
 const publicDir = path.join(process.cwd(), "public");
+
+const app = express();          // <-- create the app
+
 
 app.use(express.json());
 app.use(cors({ origin: FRONTEND_URL, credentials: true }));
@@ -34,9 +38,8 @@ if (fs.existsSync(publicDir)) {
   });
 }
 
-server.listen(PORT, () => {
+app.listen(PORT, () => {
   connectDB();
   console.log("Server is up and running on PORT:", PORT);
-
   if (process.env.NODE_ENV === "production") job.start();
 });

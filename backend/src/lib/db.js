@@ -9,7 +9,7 @@ export async function connectDB() {
     }
 
     const conn = await mongoose.connect(mongoUri, {
-      dbName: "chattingApp",
+      dbName: "chatting",
     });
 
     console.log("MongoDB connected", conn.connection.host);
