@@ -1,26 +1,21 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import "./App.css";
+import { Show, SignInButton, SignUpButton, UserButton } from "@clerk/react";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <div>
-      <h1>Chatting App</h1>
-            <header>
+      <h1>My App</h1>
+      <header>
         <Show when="signed-out">
-          <SignInButton />
-          <SignUpButton />
+          <SignInButton mode="modal"/>
+          <SignUpButton mode="modal"/>
         </Show>
         <Show when="signed-in">
           <UserButton />
         </Show>
       </header>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
